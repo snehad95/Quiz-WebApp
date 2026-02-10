@@ -1,6 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
@@ -13,39 +12,37 @@ import HowItWorks from "./components/HowItWorks";
 import StatisticsSection from "./components/StatisticsSection";
 import Testimonials from "./components/Testimonials";
 import CallToAction from "./components/CallToAction";
-
-import StudentAuth from "./components/StudentAuth";
-
-function HomePage() {
-  return (
-    <>
-      <Slideshow />
-      <FeatureBoxes />
-      <Info />
-      <ExamCategories />
-      <WhyChooseExamSphere />
-      <HowItWorks />
-      <StatisticsSection />
-      <Testimonials />
-      <CallToAction />
-    </>
-  );
-}
+import QuizPage from "./components/QuizPage";
 
 function App() {
   return (
-    <BrowserRouter>
-
+    <>
       <Header />
 
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<student_login />} />
+        <Route
+          path="/"
+          element={
+            <>
+              <Slideshow />
+              <FeatureBoxes />
+              <Info />
+              <ExamCategories />
+              <WhyChooseExamSphere />
+              <HowItWorks />
+              <StatisticsSection />
+              <Testimonials />
+              <CallToAction />
+              <Footer />
+            </>
+          }
+        />
+
+        <Route path="/quiz" element={<QuizPage />} />
+   
+        <Route path="/" element={<header/>} />
       </Routes>
-
-      <Footer />
-
-    </BrowserRouter>
+    </>
   );
 }
 

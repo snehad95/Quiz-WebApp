@@ -1,9 +1,7 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Header() {
-
-  const navigate = useNavigate();
 
   // Google search function
   const googleSearch = () => {
@@ -15,8 +13,8 @@ function Header() {
 
   return (
     <>
-    
       {/* ===== Top Black Accessibility Bar ===== */}
+    <Link to ={'/'}>Home</Link>
       <div
         className="d-flex justify-content-between align-items-center px-4"
         style={{
@@ -24,23 +22,35 @@ function Header() {
           color: "white",
           fontSize: "14px",
           padding: "6px 0",
-          margin: 0
+          margin: 0,
         }}
       >
         <span className="text-white fw-bold">Welcome to ExamSphere</span>
 
         <div className="d-flex align-items-center gap-3 fw-bold">
-          <a href="/en" className="text-white text-decoration-none">🌐 English</a>
+          <a href="/en" className="text-white text-decoration-none">
+            🌐 English
+          </a>
           <span>|</span>
-          <a href="/hi" className="text-white text-decoration-none">हिंदी</a>
+          <a href="/hi" className="text-white text-decoration-none">
+            हिंदी
+          </a>
           <span>|</span>
-          <a href="/sitemap" className="text-white text-decoration-none">Sitemap</a>
+          <a href="/sitemap" className="text-white text-decoration-none">
+            Sitemap
+          </a>
           <span>|</span>
-          <a href="/contact" className="text-white text-decoration-none">Contact Us</a>
+          <a href="/contact" className="text-white text-decoration-none">
+            Contact Us
+          </a>
           <span>|</span>
-          <a href="/feedback" className="text-white text-decoration-none">Feedback</a>
+          <a href="/feedback" className="text-white text-decoration-none">
+            Feedback
+          </a>
           <span>|</span>
-          <a href="/faq" className="text-white text-decoration-none">FAQ</a>
+          <a href="/faq" className="text-white text-decoration-none">
+            FAQ
+          </a>
 
           <span style={{ cursor: "pointer" }}>A+</span>
           <span style={{ cursor: "pointer" }}>A</span>
@@ -48,7 +58,10 @@ function Header() {
 
           <form
             className="d-flex ms-3"
-            onSubmit={(e) => { e.preventDefault(); googleSearch(); }}
+            onSubmit={(e) => {
+              e.preventDefault();
+              googleSearch();
+            }}
           >
             <input
               id="googleSearch"
@@ -67,16 +80,16 @@ function Header() {
       {/* ===== Main Navbar ===== */}
       <nav
         className="navbar navbar-expand-lg"
-        style={{ backgroundColor: "#0b1c3d" }}
+        style={{ backgroundColor: "#0b1c3d", borderBottom: "none", margin: 0 }}
       >
         <div className="container-fluid">
-
-          <a
-            className="navbar-brand d-flex align-items-center"
-            style={{ cursor: "pointer" }}
-            onClick={() => navigate("/")}
-          >
-            <img src="assets/images/logo.png" alt="logo" width="110" className="me-3" />
+          <a className="navbar-brand d-flex align-items-center" href="#">
+            <img
+              src="assets/images/logo.png"
+              alt="logo"
+              width="110"
+              className="me-3"
+            />
             <span className="fw-bold fs-3 text-white">ExamSphere</span>
           </a>
 
@@ -90,47 +103,89 @@ function Header() {
           </button>
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <div className="ms-auto d-flex align-items-center" style={{ gap: "30px" }}>
-              
-              <ul className="navbar-nav mb-0 d-flex flex-row" style={{ gap: "95px" }}>
+            <div
+              className="ms-auto d-flex align-items-center"
+              style={{ gap: "30px" }}
+            >
+              <ul
+                className="navbar-nav mb-0 d-flex flex-row"
+                style={{ gap: "95px" }}
+              >
                 <li className="nav-item">
-                  <span className="nav-link text-white fw-semibold"
+                  <a
+                    className="nav-link text-white fw-semibold"
+                    href="#"
                     style={{ cursor: "pointer", fontSize: "18px" }}
-                    onClick={() => navigate("/")}
                   >
                     Home
-                  </span>
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a
+                    className="nav-link text-white fw-semibold"
+                    href="#"
+                    style={{ cursor: "pointer", fontSize: "18px" }}
+                  >
+                    About
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a
+                    className="nav-link text-white fw-semibold"
+                    href="QuizPage"
+                    style={{ cursor: "pointer", fontSize: "18px" }}
+                  >
+                    Exams
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a
+                    className="nav-link text-white fw-semibold"
+                    href="#"
+                    style={{ cursor: "pointer", fontSize: "18px" }}
+                  >
+                    Course
+                  </a>
                 </li>
               </ul>
 
               <div className="d-flex" style={{ gap: "15px" }}>
-
-                {/* ⭐ Login Button */}
+                {/*< Link to ="/Login">*/}
                 <button
                   className="btn btn-outline-light px-4 rounded-pill"
-                  onClick={() => navigate("/StudentAuth")}
+                  style={{ cursor: "pointer" }}
                 >
-                  Login
+                  LogIn
                 </button>
+                {/*</Link>*/}
 
-                {/* ⭐ Sign Up Button */}
-                <button
+                 {/*<Link to="/create-account">*/}
+                 <button
                   className="btn px-4 rounded-pill text-white"
                   style={{
                     background: "linear-gradient(45deg,#4facfe,#00f2fe)",
-                    border: "none"
+                    border: "none",
+                    cursor: "pointer",
                   }}
-                  onClick={() => navigate("/StudentAuth")}
+                  
                 >
-                  Sign Up
-                </button>
-
+                  Create Account
+                </button> 
+                {/*}
+                </Link> 
+                */}
+                {/* <Link to="/create-account">
+                  <button className="btn px-4 rounded-pill text-white">
+                    Create Account
+                  </button>
+                </Link> */}
               </div>
             </div>
           </div>
         </div>
       </nav>
 
+      {/* Hover effect */}
       <style jsx>{`
         .nav-link:hover {
           color: #4facfe !important;

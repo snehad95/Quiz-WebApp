@@ -1,9 +1,6 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
 function ExamCategories() {
-
-  const navigate = useNavigate();   
 
   const categories = [
     {
@@ -69,10 +66,7 @@ function ExamCategories() {
                   {cat.desc}
                 </p>
 
-                <button
-                  className="btn btn-primary"
-                  onClick={() => navigate("/StudentAuth")}
-                >
+                <button className="btn btn-primary">
                   Start Quiz
                 </button>
 
