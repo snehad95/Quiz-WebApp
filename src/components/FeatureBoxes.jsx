@@ -60,7 +60,7 @@ function FeatureBoxes() {
           box-shadow: 0 12px 30px rgba(13,110,253,0.25);
         }
 
-        /* Icon Animation */
+        /* Icon Animation (Straight open) */
         .feature-icon {
           width: 55px;
           height: 55px;
@@ -69,7 +69,7 @@ function FeatureBoxes() {
         }
 
         .feature-box:hover .feature-icon {
-          transform: rotate(8deg) scale(1.1);
+          transform: scale(1.1);
         }
 
         /* Text Style */

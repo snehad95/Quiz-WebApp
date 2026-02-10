@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+
+  const navigate = useNavigate();
 
   // Google search function
   const googleSearch = () => {
@@ -12,6 +15,7 @@ function Header() {
 
   return (
     <>
+    
       {/* ===== Top Black Accessibility Bar ===== */}
       <div
         className="d-flex justify-content-between align-items-center px-4"
@@ -53,7 +57,9 @@ function Header() {
               type="search"
               placeholder="Search"
             />
-            <button type="submit" className="btn btn-outline-success btn-sm">Search</button>
+            <button type="submit" className="btn btn-outline-success btn-sm">
+              Search
+            </button>
           </form>
         </div>
       </div>
@@ -61,11 +67,15 @@ function Header() {
       {/* ===== Main Navbar ===== */}
       <nav
         className="navbar navbar-expand-lg"
-        style={{ backgroundColor: "#0b1c3d", borderBottom: "none", margin: 0 }}
+        style={{ backgroundColor: "#0b1c3d" }}
       >
         <div className="container-fluid">
 
-          <a className="navbar-brand d-flex align-items-center" href="#">
+          <a
+            className="navbar-brand d-flex align-items-center"
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/")}
+          >
             <img src="assets/images/logo.png" alt="logo" width="110" className="me-3" />
             <span className="fw-bold fs-3 text-white">ExamSphere</span>
           </a>
@@ -81,36 +91,46 @@ function Header() {
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <div className="ms-auto d-flex align-items-center" style={{ gap: "30px" }}>
+              
               <ul className="navbar-nav mb-0 d-flex flex-row" style={{ gap: "95px" }}>
                 <li className="nav-item">
-                  <a className="nav-link text-white fw-semibold" href="#" style={{ cursor: "pointer", fontSize: "18px" }}>Home</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-white fw-semibold" href="#" style={{ cursor: "pointer", fontSize: "18px" }}>About</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-white fw-semibold" href="#" style={{ cursor: "pointer", fontSize: "18px" }}>Exams</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-white fw-semibold" href="#" style={{ cursor: "pointer", fontSize: "18px" }}>Course</a>
+                  <span className="nav-link text-white fw-semibold"
+                    style={{ cursor: "pointer", fontSize: "18px" }}
+                    onClick={() => navigate("/")}
+                  >
+                    Home
+                  </span>
                 </li>
               </ul>
 
               <div className="d-flex" style={{ gap: "15px" }}>
-                <button className="btn btn-outline-light px-4 rounded-pill" style={{ cursor: "pointer" }}>Login</button>
+
+                {/* ⭐ Login Button */}
+                <button
+                  className="btn btn-outline-light px-4 rounded-pill"
+                  onClick={() => navigate("/StudentAuth")}
+                >
+                  Login
+                </button>
+
+                {/* ⭐ Sign Up Button */}
                 <button
                   className="btn px-4 rounded-pill text-white"
-                  style={{ background: "linear-gradient(45deg,#4facfe,#00f2fe)", border: "none", cursor: "pointer" }}
+                  style={{
+                    background: "linear-gradient(45deg,#4facfe,#00f2fe)",
+                    border: "none"
+                  }}
+                  onClick={() => navigate("/StudentAuth")}
                 >
                   Sign Up
                 </button>
+
               </div>
             </div>
           </div>
         </div>
       </nav>
 
-      {/* Hover effect */}
       <style jsx>{`
         .nav-link:hover {
           color: #4facfe !important;

@@ -1,10 +1,11 @@
 import React from "react";
-import { CheckCircle2, Zap } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 
 const infoData = [
   {
-    number: 1,
+    
     title: "About Our Quiz Project",
+    gif: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
     side: "left",
     description:
       "Our quiz platform helps students practice concepts, prepare for exams, and improve performance through structured assessment.",
@@ -16,10 +17,12 @@ const infoData = [
     ],
   },
   {
-    number: 2,
+   
     title: "Quiz Types",
+    gif: "https://cdn-icons-png.flaticon.com/512/4205/4205906.png",
     side: "right",
-    description: "Multiple quiz formats designed to evaluate different learning skills.",
+    description:
+      "Multiple quiz formats designed to evaluate different learning skills.",
     points: [
       "Fill in the Blanks",
       "Subjective Questions",
@@ -27,57 +30,57 @@ const infoData = [
     ],
   },
   {
-    number: 3,
+   
     title: "Performance Tracking",
+    gif: "https://cdn-icons-png.flaticon.com/512/1828/1828919.png",
     side: "left",
-    description: "Students can monitor their progress and identify weak areas.",
-    points: [
-      "Instant Result",
-      "Score Tracking",
-      "Detailed Analysis",
-    ],
+    description:
+      "Students can monitor their progress and identify weak areas.",
+    points: ["Instant Result", "Score Tracking", "Detailed Analysis"],
   },
   {
-    number: 4,
+   
     title: "Learning Benefits",
-    side: "left",
-    description: "Improves conceptual clarity and time management skills.",
-    points: [
-      "Concept Clarity",
-      "Time Management",
-      "Practice Questions",
-    ],
+    gif: "https://cdn-icons-png.flaticon.com/512/2991/2991148.png",
+    side: "right",
+    description:
+      "Improves conceptual clarity and time management skills.",
+    points: ["Concept Clarity", "Time Management", "Practice Questions"],
   },
   {
-    number: 5,
+ 
     title: "User Features",
-    side: "right",
-    description: "User friendly and secure platform designed for smooth experience.",
-    points: [
-      "Easy Interface",
-      "Mobile Friendly",
-      "Secure Access",
-    ],
+    gif: "https://cdn-icons-png.flaticon.com/512/747/747376.png",
+    side: "left",
+    description:
+      "User friendly and secure platform designed for smooth experience.",
+    points: ["Easy Interface", "Mobile Friendly", "Secure Access"],
   },
 ];
 
 function Info() {
   return (
-    <section className="bg-slate-50 py-20 px-4">
-      <div className="max-w-6xl mx-auto relative">
+    <section
+      className="py-5"
+      style={{
+        background: "linear-gradient(135deg,#eff6ff,#dbeafe,#bfdbfe)",
+      }}
+    >
+      <div className="container position-relative">
 
         {/* Timeline Line */}
-        <div className="hidden md:block absolute left-1/2 top-0 h-full w-1 bg-blue-400 -translate-x-1/2" />
+        <div
+          className="position-absolute top-0 start-50 translate-middle-x d-none d-md-block"
+          style={{
+            width: "5px",
+            height: "100%",
+            background: "linear-gradient(to bottom,#3b82f6,#60a5fa,#93c5fd)",
+          }}
+        />
 
-        <div className="space-y-20">
-          {infoData.map((item, index) => (
-            <TimelineItem
-              key={index}
-              item={item}
-              isLeft={item.side === "left"}
-            />
-          ))}
-        </div>
+        {infoData.map((item, index) => (
+          <TimelineItem key={index} item={item} />
+        ))}
       </div>
     </section>
   );
@@ -85,54 +88,99 @@ function Info() {
 
 export default Info;
 
-/* ---------- Timeline Item ---------- */
+/* ---------------- Timeline Item ---------------- */
 
-function TimelineItem({ item, isLeft }) {
+function TimelineItem({ item }) {
+  const isLeft = item.side === "left";
+
   return (
-    <div className="relative">
+    <div className="row my-5 align-items-center position-relative">
 
-      {/* Timeline Dot */}
-      <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-6 h-6 bg-blue-500 rounded-full border-4 border-white shadow-md" />
-
-      {/* Card Container */}
-      <div className={`md:w-[45%] ${isLeft ? "md:mr-auto md:pr-10" : "md:ml-auto md:pl-10"}`}>
-        
-        <div className="bg-white rounded-2xl shadow-lg border border-blue-200 p-7 hover:-translate-y-2 transition duration-300">
-
-          {/* Header */}
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-xl flex items-center justify-center text-white">
-              <Zap size={20} />
-            </div>
-
-            <div>
-              <p className="text-xs text-gray-400 font-bold">
-                Section {item.number}
-              </p>
-
-              <h3 className="text-xl font-bold text-gray-800">
-                {item.title}
-              </h3>
-            </div>
-          </div>
-
-          {/* Description */}
-          <p className="text-gray-600 mb-5">
-            {item.description}
-          </p>
-
-          {/* Points */}
-          <ul className="space-y-2">
-            {item.points.map((point, i) => (
-              <li key={i} className="flex items-center gap-2 text-gray-600">
-                <CheckCircle2 className="text-green-500 w-4 h-4" />
-                {point}
-              </li>
-            ))}
-          </ul>
-
+      {isLeft && (
+        <div className="col-md-6">
+          <CreativeCard item={item} />
         </div>
+      )}
+
+      {/* Timeline Dot - PERFECT CENTER */}
+      <div
+        className="d-none d-md-flex position-absolute top-50 start-50 translate-middle rounded-circle shadow-lg"
+        style={{
+          width: "50px",
+          height: "50px",
+          background: "linear-gradient(45deg,#3b82f6,#2563eb)",
+          color: "white",
+          alignItems: "center",
+          justifyContent: "center",
+          fontWeight: "bold",
+          fontSize: "18px",
+          zIndex: 2,
+        }}
+      >
+        {item.number}
       </div>
+
+      {!isLeft && (
+        <div className="col-md-6 offset-md-6">
+          <CreativeCard item={item} />
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ---------------- Card ---------------- */
+
+function CreativeCard({ item }) {
+  return (
+    <div
+      className="p-4 shadow-lg"
+      style={{
+        borderRadius: "20px",
+        backdropFilter: "blur(12px)",
+        background:
+          "linear-gradient(135deg,rgba(255,255,255,0.8),rgba(219,234,254,0.6))",
+        border: "1px solid rgba(59,130,246,0.2)",
+        transition: "0.4s",
+      }}
+    >
+      <div className="d-flex align-items-center mb-3">
+
+        <img
+          src={item.gif}
+          alt="icon"
+          style={{
+            width: "60px",
+            height: "60px",
+            marginRight: "15px",
+          }}
+        />
+
+        <h5
+          className="fw-bold"
+          style={{
+            background: "linear-gradient(45deg,#2563eb,#1d4ed8)",
+            WebkitBackgroundClip: "text",
+            color: "transparent",
+          }}
+        >
+          {item.title}
+        </h5>
+      </div>
+
+      <p className="text-muted">{item.description}</p>
+
+      <ul className="list-unstyled">
+        {item.points.map((point, i) => (
+          <li key={i} className="d-flex mb-2">
+            <CheckCircle2
+              size={20}
+              style={{ color: "#2563eb", marginRight: "8px" }}
+            />
+            <span className="fw-semibold">{point}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
