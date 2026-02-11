@@ -36,7 +36,7 @@ function generateCandidateID() {
 
 /* ===== Main Quiz Page ===== */
 
-function QuizPage() {
+function QuizPageHome() {
 
   const [candidateID] = useState(generateCandidateID());
 
@@ -136,4 +136,4 @@ function QuizPage() {
   );
 }
 
-export default QuizPage;
+export default QuizPageHome;

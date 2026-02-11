@@ -13,6 +13,10 @@ import StatisticsSection from "./components/StatisticsSection";
 import Testimonials from "./components/Testimonials";
 import CallToAction from "./components/CallToAction";
 import QuizPage from "./components/QuizPage";
+import About from "./components/About";
+import Course from "./components/Course";
+
+
 
 function App() {
   return (
@@ -20,10 +24,12 @@ function App() {
       <Header />
 
       <Routes>
+        {/* ===== Home Page ===== */}
         <Route
           path="/"
           element={
             <>
+            
               <Slideshow />
               <FeatureBoxes />
               <Info />
@@ -33,17 +39,25 @@ function App() {
               <StatisticsSection />
               <Testimonials />
               <CallToAction />
-              <Footer />
+              
+            
+          
             </>
           }
         />
 
-        <Route path="/quiz" element={<QuizPage />} />
-   
-        <Route path="/" element={<header/>} />
+        {/* ===== Quiz Page ===== */}
+        <Route path="/QuizPage/*" element={<QuizPage />} />
+        <Route path="/About" element={<About/>}/>
+        <Route path="/Course" element={<Course/>}/>
+       
+
+
       </Routes>
+          <Footer />
     </>
   );
 }
 
 export default App;
+
