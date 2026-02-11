@@ -52,6 +52,10 @@ const featuredSlide2 = [
 function Course() {
   return (
     <div className="container mt-5">
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/main
       {/* MAIN HEADING */}
       <h2 className="text-center mb-4" style={{ color: "#324A8E" }}>
         Career-Focused Learning Paths
@@ -59,19 +63,44 @@ function Course() {
 
       {/* ================= TRENDING COURSES ================= */}
       <h4 className="mb-3">Trending Courses</h4>
+<<<<<<< HEAD
       <Carousel id="trendingCarousel" slide1={trendingSlide1} slide2={trendingSlide2} />
+=======
+      <Carousel
+        id="trendingCarousel"
+        slide1={trendingSlide1}
+        slide2={trendingSlide2}
+      />
+>>>>>>> upstream/main
 
       {/* ================= AIML COURSES ================= */}
       <h4 className="mt-5 mb-3">
         Top Courses in <span style={{ color: "#324A8E" }}>AIML</span>
       </h4>
+<<<<<<< HEAD
       <Carousel id="aimlCarousel" slide1={aimlSlide1} slide2={aimlSlide2} />
+=======
+      <Carousel
+        id="aimlCarousel"
+        slide1={aimlSlide1}
+        slide2={aimlSlide2}
+      />
+>>>>>>> upstream/main
 
       {/* ================= FEATURED COURSES ================= */}
       <h4 className="mt-5 mb-3">
         <span style={{ color: "#324A8E" }}>Featured</span> Courses
       </h4>
+<<<<<<< HEAD
       <Carousel id="featuredCarousel" slide1={featuredSlide1} slide2={featuredSlide2} />
+=======
+      <Carousel
+        id="featuredCarousel"
+        slide1={featuredSlide1}
+        slide2={featuredSlide2}
+      />
+
+>>>>>>> upstream/main
     </div>
   );
 }
@@ -80,8 +109,18 @@ function Course() {
 
 function Carousel({ id, slide1, slide2 }) {
   return (
+<<<<<<< HEAD
     <div id={id} className="carousel slide position-relative mb-4" data-bs-ride="carousel">
       <div className="carousel-inner">
+=======
+    <div
+      id={id}
+      className="carousel slide position-relative mb-4"
+      data-bs-ride="carousel"
+    >
+      <div className="carousel-inner">
+
+>>>>>>> upstream/main
         <div className="carousel-item active">
           <div className="row">
             {slide1.map((course, index) => (
@@ -111,6 +150,10 @@ function Carousel({ id, slide1, slide2 }) {
             ))}
           </div>
         </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/main
       </div>
 
       {/* LEFT ARROW */}
