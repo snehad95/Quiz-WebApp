@@ -8,7 +8,7 @@ import Slideshow from "./components/Slideshow";
 import FeatureBoxes from "./components/FeatureBoxes";
 import Info from "./components/Info";
 import ExamCategories from "./components/ExamCategories";
-import WhyChooseExamSphere from "./components/WhyChooseExamSphere";
+
 import HowItWorks from "./components/HowItWorks";
 import StatisticsSection from "./components/StatisticsSection";
 import Testimonials from "./components/Testimonials";
@@ -37,7 +37,6 @@ function App() {
               <FeatureBoxes />
               <Info />
               <ExamCategories />
-              <WhyChooseExamSphere />
               <HowItWorks />
               <StatisticsSection />
               <Testimonials />
