@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Course from "./Course";
-import FeatureBoxes from "./FeatureBoxes";
 
 function Header() {
   // Google search function
@@ -28,34 +26,37 @@ function Header() {
         <span className="text-white fw-bold">Welcome to ExamSphere</span>
 
         <div className="d-flex align-items-center gap-3 fw-bold">
-          <a href="/en" className="text-white text-decoration-none">
+          {/* Language Links */}
+          <Link to="/" className="text-white text-decoration-none">
             🌐 English
-          </a>
+          </Link>
           <span>|</span>
-          <a href="/hi" className="text-white text-decoration-none">
+          <Link to="/" className="text-white text-decoration-none">
             हिंदी
-          </a>
+          </Link>
           <span>|</span>
-          <a href="/sitemap" className="text-white text-decoration-none">
+          <Link to="/" className="text-white text-decoration-none">
             Sitemap
-          </a>
+          </Link>
           <span>|</span>
-          <a href="/contact" className="text-white text-decoration-none">
+          <Link to="/" className="text-white text-decoration-none">
             Contact Us
-          </a>
+          </Link>
           <span>|</span>
-          <a href="/feedback" className="text-white text-decoration-none">
+          <Link to="/" className="text-white text-decoration-none">
             Feedback
-          </a>
+          </Link>
           <span>|</span>
-          <a href="/faq" className="text-white text-decoration-none">
+          <Link to="/" className="text-white text-decoration-none">
             FAQ
-          </a>
+          </Link>
 
+          {/* Font size controls */}
           <span style={{ cursor: "pointer" }}>A+</span>
           <span style={{ cursor: "pointer" }}>A</span>
           <span style={{ cursor: "pointer" }}>A-</span>
 
+          {/* Google Search */}
           <form
             className="d-flex ms-3"
             onSubmit={(e) => {
@@ -78,12 +79,13 @@ function Header() {
       </div>
 
       {/* ===== Main Navbar ===== */}
-      <nav
-        className="navbar navbar-expand-lg"
-        style={{ backgroundColor: "#0b1c3d", borderBottom: "none", margin: 0 }}
-      >
+      <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "#0b1c3d" }}>
         <div className="container-fluid">
-          <a className="navbar-brand d-flex align-items-center" href="#">
+          {/* Logo */}
+          <Link
+            to="/"
+            className="navbar-brand d-flex align-items-center text-decoration-none"
+          >
             <img
               src="assets/images/logo.png"
               alt="logo"
@@ -91,8 +93,9 @@ function Header() {
               className="me-3"
             />
             <span className="fw-bold fs-3 text-white">ExamSphere</span>
-          </a>
+          </Link>
 
+          {/* Mobile Toggle */}
           <button
             className="navbar-toggler bg-light"
             type="button"
@@ -103,89 +106,66 @@ function Header() {
           </button>
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <div
-              className="ms-auto d-flex align-items-center"
-              style={{ gap: "30px" }}
-            >
-              <ul
-                className="navbar-nav mb-0 d-flex flex-row"
-                style={{ gap: "95px" }}
-              >
+            <div className="ms-auto d-flex align-items-center" style={{ gap: "30px" }}>
+              {/* Navbar Menu */}
+              <ul className="navbar-nav mb-0 d-flex flex-row" style={{ gap: "95px" }}>
                 <li className="nav-item">
-                  <Link to="/">
-                  <a
+                  <Link
+                    to="/"
                     className="nav-link text-white fw-semibold"
-                    href="#"
-                    style={{ cursor: "pointer", fontSize: "18px" }}
+                    style={{ fontSize: "18px" }}
                   >
                     Home
-                  </a>
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="About">
-                  <a
+                  <Link
+                    to="/About"
                     className="nav-link text-white fw-semibold"
-                    href="#"
-                    style={{ cursor: "pointer", fontSize: "18px" }}
+                    style={{ fontSize: "18px" }}
                   >
                     About
-                  </a>
                   </Link>
                 </li>
                 <li className="nav-item">
-                  < Link to="Exams">
-                  <a
+                  <Link
+                    to="/QuizPage"
                     className="nav-link text-white fw-semibold"
-                    href="#"
-                    style={{ cursor: "pointer", fontSize: "18px" }}
+                    style={{ fontSize: "18px" }}
                   >
                     Exams
-                  </a>
                   </Link>
                 </li>
-                <Link to ="/Course">
                 <li className="nav-item">
-                  
-                  <a 
+                  <Link
+                    to="/Course"
                     className="nav-link text-white fw-semibold"
-                    href="#"
-                    style={{ cursor: "pointer", fontSize: "18px" }}
+                    style={{ fontSize: "18px" }}
                   >
                     Course
-                  </a>
+                  </Link>
                 </li>
-                </Link>
               </ul>
 
+              {/* Buttons */}
               <div className="d-flex" style={{ gap: "15px" }}>
-                < Link to ="/Login">
-                <button
-                  className="btn btn-outline-light px-4 rounded-pill"
-                  style={{ cursor: "pointer" }}
-                >
-                  LogIn
-                </button>
+                <Link to="/Login">
+                  <button className="btn btn-outline-light px-4 rounded-pill">
+                    LogIn
+                  </button>
                 </Link>
 
-                 <Link to="/create-account">
-                 <button
-                  className="btn px-4 rounded-pill text-white"
-                  style={{
-                    background: "linear-gradient(45deg,#4facfe,#00f2fe)",
-                    border: "none",
-                    cursor: "pointer",
-                  }}
-                  
-                >
-                  Create Account
-                </button> 
-                </Link> 
-                {/* <Link to="/create-account">
-                  <button className="btn px-4 rounded-pill text-white">
+                <Link to="/create-account">
+                  <button
+                    className="btn px-4 rounded-pill text-white"
+                    style={{
+                      background: "linear-gradient(45deg,#4facfe,#00f2fe)",
+                      border: "none",
+                    }}
+                  >
                     Create Account
                   </button>
-                </Link> */}
+                </Link>
               </div>
             </div>
           </div>
@@ -193,14 +173,17 @@ function Header() {
       </nav>
 
       {/* Hover effect */}
-      <style jsx>{`
-        .nav-link:hover {
-          color: #4facfe !important;
-        }
-        .btn:hover {
-          opacity: 0.85;
-        }
-      `}</style>
+      <style>
+        {`
+          .nav-link:hover {
+            color: #4facfe !important;
+          }
+
+          .btn:hover {
+            opacity: 0.85;
+          }
+        `}
+      </style>
     </>
   );
 }

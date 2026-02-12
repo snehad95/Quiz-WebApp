@@ -2,19 +2,24 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
+import Footer from "./components/Footer";
+
 import Slideshow from "./components/Slideshow";
 import FeatureBoxes from "./components/FeatureBoxes";
-import Footer from "./components/Footer";
 import Info from "./components/Info";
-import CreateAccount from "./components/CreateAccount";
-import Login from "./components/Login";
+import ExamCategories from "./components/ExamCategories";
+import WhyChooseExamSphere from "./components/WhyChooseExamSphere";
+import HowItWorks from "./components/HowItWorks";
+import StatisticsSection from "./components/StatisticsSection";
+import Testimonials from "./components/Testimonials";
+import CallToAction from "./components/CallToAction";
+import QuizPage from "./components/QuizPage";
+import About from "./components/About";
 import Course from "./components/Course";
 import Exams from "./components/Exams";
-import About from "./components/About";
-import ExamCategories from "./ExamCategories";
+import CreateAccount from "./components/CreateAccount";
+import Login from "./components/Login";
 import HomePage from "./HomePage";
-
-
 
 function App() {
   return (
@@ -22,9 +27,8 @@ function App() {
       {/* Common Header */}
       <Header />
 
-      {/* Routes */}
       <Routes>
-        {/* Home Page */}
+        {/* ===== Home Page ===== */}
         <Route
           path="/"
           element={
@@ -32,23 +36,26 @@ function App() {
               <Slideshow />
               <FeatureBoxes />
               <Info />
-              <ExamCategories/>
-              <HomePage/>
+              <ExamCategories />
+              <WhyChooseExamSphere />
+              <HowItWorks />
+              <StatisticsSection />
+              <Testimonials />
+              <CallToAction />
+              <HomePage />
             </>
           }
         />
 
-        {/* Create Account Page */}
-        
+        {/* ===== Other Pages ===== */}
+        <Route path="/QuizPage/*" element={<QuizPage />} />
+        <Route path="/About" element={<About />} />
+        <Route path="/Course" element={<Course />} />
+        <Route path="/Exams" element={<Exams />} />
         <Route path="/create-account" element={<CreateAccount />} />
-         <Route path="/Login" element={<Login />} />
-         <Route path="/Course" element={<Course />} />
-         <Route path="/Exams" element={<Exams />} />
-         <Route path="/About" element={<About />} />
-         <Route path="/FeatureBoxes" element={<FeatureBoxes />} />
-    
-
-        </Routes>
+        <Route path="/Login" element={<Login />} />
+        <Route path="/FeatureBoxes" element={<FeatureBoxes />} />
+      </Routes>
 
       {/* Common Footer */}
       <Footer />

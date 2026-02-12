@@ -51,11 +51,12 @@ function Footer() {
 
             <p>
               Centre for Development of Advanced Computing <br />
-              C-DAC Innovation Park, <br />
-              Panchavati, Pashan, Pune – 411 008, Maharashtra (India)
-            </p>
+             Plot No. 20, FC-33, Institutional Area, Jasola, <br />
+New Delhi, Delhi 110025, India
+             
+        </p>
 
-            <p>📞 Phone: +91-20-25503100</p>
+            <p>📞 Phone: (011) 26940239</p>
             <p>📠 Fax: +91-20-25503131</p>
           </div>
 
@@ -72,6 +73,7 @@ function Footer() {
           Website owned & maintained by: Centre for Development of Advanced Computing (C-DAC)
         </p>
 
+<p>Created By CDAC Intern - Purva Athnere, Sneha Dhotre , Pooja Vedwal , Aditi Giri</p>
         <p className="mb-0">© 2026 C-DAC. All rights reserved.</p>
       </div>
 

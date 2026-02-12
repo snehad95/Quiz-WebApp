@@ -3,7 +3,6 @@ import { CheckCircle2 } from "lucide-react";
 
 const infoData = [
   {
-    
     title: "About Our Quiz Project",
     gif: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
     side: "left",
@@ -17,7 +16,6 @@ const infoData = [
     ],
   },
   {
-   
     title: "Quiz Types",
     gif: "https://cdn-icons-png.flaticon.com/512/4205/4205906.png",
     side: "right",
@@ -30,7 +28,6 @@ const infoData = [
     ],
   },
   {
-   
     title: "Performance Tracking",
     gif: "https://cdn-icons-png.flaticon.com/512/1828/1828919.png",
     side: "left",
@@ -39,7 +36,6 @@ const infoData = [
     points: ["Instant Result", "Score Tracking", "Detailed Analysis"],
   },
   {
-   
     title: "Learning Benefits",
     gif: "https://cdn-icons-png.flaticon.com/512/2991/2991148.png",
     side: "right",
@@ -48,7 +44,6 @@ const infoData = [
     points: ["Concept Clarity", "Time Management", "Practice Questions"],
   },
   {
- 
     title: "User Features",
     gif: "https://cdn-icons-png.flaticon.com/512/747/747376.png",
     side: "left",
@@ -67,7 +62,6 @@ function Info() {
       }}
     >
       <div className="container position-relative">
-
         {/* Timeline Line */}
         <div
           className="position-absolute top-0 start-50 translate-middle-x d-none d-md-block"
@@ -89,13 +83,11 @@ function Info() {
 export default Info;
 
 /* ---------------- Timeline Item ---------------- */
-
 function TimelineItem({ item }) {
   const isLeft = item.side === "left";
 
   return (
     <div className="row my-5 align-items-center position-relative">
-
       {isLeft && (
         <div className="col-md-6">
           <CreativeCard item={item} />
@@ -130,7 +122,6 @@ function TimelineItem({ item }) {
 }
 
 /* ---------------- Card ---------------- */
-
 function CreativeCard({ item }) {
   return (
     <div
@@ -145,7 +136,6 @@ function CreativeCard({ item }) {
       }}
     >
       <div className="d-flex align-items-center mb-3">
-
         <img
           src={item.gif}
           alt="icon"
@@ -184,3 +174,4 @@ function CreativeCard({ item }) {
     </div>
   );
 }
+

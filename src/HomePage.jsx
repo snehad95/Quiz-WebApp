@@ -394,12 +394,16 @@ function CallToAction() {
           and build confidence with every quiz you attempt.
         </p>
 
-        <button
+        
+        <butto
+        
           className="btn btn-light btn-lg px-4 fw-semibold"
           style={{ borderRadius: "30px" }}
         >
           Start Practicing Now
-        </button>
+         
+        </butto>
+        
       </div>
     </section>
   );
