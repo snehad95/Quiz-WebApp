@@ -51,58 +51,89 @@ const featuredSlide2 = [
 
 function Course() {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mt-5">
       {/* MAIN HEADING */}
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 mb-8">
+      <h2 className="text-center mb-4" style={{ color: "#324A8E" }}>
         Career-Focused Learning Paths
       </h2>
 
       {/* ================= TRENDING COURSES ================= */}
-      <Section title="Trending Courses" slides={[trendingSlide1, trendingSlide2]} />
+      <h4 className="mb-3">Trending Courses</h4>
+      <Carousel id="trendingCarousel" slide1={trendingSlide1} slide2={trendingSlide2} />
 
       {/* ================= AIML COURSES ================= */}
-      <Section
-        title={
-          <>
-            Top Courses in <span className="text-blue-900">AIML</span>
-          </>
-        }
-        slides={[aimlSlide1, aimlSlide2]}
-      />
+      <h4 className="mt-5 mb-3">
+        Top Courses in <span style={{ color: "#324A8E" }}>AIML</span>
+      </h4>
+      <Carousel id="aimlCarousel" slide1={aimlSlide1} slide2={aimlSlide2} />
 
       {/* ================= FEATURED COURSES ================= */}
-      <Section
-        title={
-          <>
-            <span className="text-blue-900">Featured</span> Courses
-          </>
-        }
-        slides={[featuredSlide1, featuredSlide2]}
-      />
+      <h4 className="mt-5 mb-3">
+        <span style={{ color: "#324A8E" }}>Featured</span> Courses
+      </h4>
+      <Carousel id="featuredCarousel" slide1={featuredSlide1} slide2={featuredSlide2} />
     </div>
   );
 }
 
-/* ================= REUSABLE SECTION ================= */
+/* ================= REUSABLE CAROUSEL ================= */
 
-function Section({ title, slides }) {
+function Carousel({ id, slide1, slide2 }) {
   return (
-    <div className="mb-12">
-      <h4 className="text-xl md:text-2xl font-semibold mb-4">{title}</h4>
-
-      <div className="flex overflow-x-auto space-x-4 scrollbar-hide pb-2">
-        {slides.flat().map((course, index) => (
-          <div
-            key={index}
-            className="flex-shrink-0 w-64 sm:w-56 md:w-64 lg:w-72 bg-white rounded-xl shadow-lg overflow-hidden"
-          >
-            <img src={course.img} alt={course.title} className="w-full h-40 object-cover" />
-            <div className="p-4 text-center">
-              <p className="font-semibold text-gray-700">{course.title}</p>
-            </div>
+    <div id={id} className="carousel slide position-relative mb-4" data-bs-ride="carousel">
+      <div className="carousel-inner">
+        <div className="carousel-item active">
+          <div className="row">
+            {slide1.map((course, index) => (
+              <div className="col-md-3 col-sm-6 mb-4" key={index}>
+                <div className="card h-100">
+                  <img src={course.img} className="card-img-top" alt={course.title} />
+                  <div className="card-body text-center">
+                    <p className="card-text">{course.title}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
+
+        <div className="carousel-item">
+          <div className="row">
+            {slide2.map((course, index) => (
+              <div className="col-md-3 col-sm-6 mb-4" key={index}>
+                <div className="card h-100">
+                  <img src={course.img} className="card-img-top" alt={course.title} />
+                  <div className="card-body text-center">
+                    <p className="card-text">{course.title}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
+
+      {/* LEFT ARROW */}
+      <button
+        className="carousel-control-prev"
+        type="button"
+        data-bs-target={`#${id}`}
+        data-bs-slide="prev"
+        style={{ marginLeft: "-130px" }}
+      >
+        <span style={{ fontSize: "30px", color: "black" }}>&#10094;</span>
+      </button>
+
+      {/* RIGHT ARROW */}
+      <button
+        className="carousel-control-next"
+        type="button"
+        data-bs-target={`#${id}`}
+        data-bs-slide="next"
+        style={{ marginRight: "-130px" }}
+      >
+        <span style={{ fontSize: "30px", color: "black" }}>&#10095;</span>
+      </button>
     </div>
   );
 }
