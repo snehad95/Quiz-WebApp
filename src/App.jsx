@@ -46,6 +46,8 @@ function App() {
          <Route path="/Exams" element={<Exams />} />
          <Route path="/About" element={<About />} />
          <Route path="/FeatureBoxes" element={<FeatureBoxes />} />
+    
+
         </Routes>
 
       {/* Common Footer */}
