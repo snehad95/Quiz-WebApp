@@ -20,6 +20,9 @@ import Exams from "./components/Exams";
 import CreateAccount from "./components/CreateAccount";
 import Login from "./components/Login";
 import HomePage from "./HomePage";
+import Dashboard from "./components/Dashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
+
 
 function App() {
   return (
@@ -47,6 +50,15 @@ function App() {
         />
 
         {/* ===== Other Pages ===== */}
+        <Route path="/dashboard" 
+        element={
+            <ProtectedRoute>
+               <Dashboard />
+            </ProtectedRoute>
+          } 
+          />
+
+        
         <Route path="/QuizPage/*" element={<QuizPage />} />
         <Route path="/About" element={<About />} />
         <Route path="/Course" element={<Course />} />

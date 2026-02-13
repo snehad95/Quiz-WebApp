@@ -7,6 +7,8 @@ import {
   Smartphone,
   Layers,
 } from "lucide-react";
+import AuthModal from "./components/AuthModal";
+
 
 /* ================= WHY CHOOSE ================= */
 
@@ -395,14 +397,14 @@ function CallToAction() {
         </p>
 
         
-        <butto
+        <button
         
           className="btn btn-light btn-lg px-4 fw-semibold"
           style={{ borderRadius: "30px" }}
         >
           Start Practicing Now
          
-        </butto>
+        </button>
         
       </div>
     </section>
@@ -412,8 +414,14 @@ function CallToAction() {
 /* ================= MAIN COMPONENT ================= */
 
 function HomePage() {
+
+  const [showAuth,setShowAuth] = useState(true);
+
   return (
     <>
+
+      {showAuth && <AuthModal onClose={() => setShowAuth(false)} />}
+
       <WhyChooseExamSphere />
       <HowItWorks />
       <StatisticsSection />

@@ -1,7 +1,39 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import API from "../api/api";
+import { isLoggedIn } from "../utils/auth";
 
 function Login() {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  
+  useEffect(() => {
+    if(isLoggedIn()) {
+      navigate("/dashboard");
+    }
+  }, []);
+
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await API.post("/api/auth/login", {
+        email,
+        password,
+      });
+
+      localStorage.setItem("token", res.data.token);
+      navigate("/dashboard");
+
+    } catch (err) {
+      alert("Invalid login");
+    }
+  };
+
   return (
     <div
       className="d-flex justify-content-center align-items-center"
@@ -22,61 +54,42 @@ function Login() {
           padding: "30px",
         }}
       >
-        {/* Heading */}
         <h2 className="text-center mb-2" style={{ color: "#4da6ff" }}>
           Log In Your Account
         </h2>
-        <p className="text-center mb-4" style={{ color: "#9ecbff" }}>
-          Test your skills. Track your growth. Level up.
-        </p>
 
-        {/* FORM */}
-        <form>
-          {/* Email */}
+        <form onSubmit={handleLogin}>
+
           <div className="mb-3">
-            <label className="form-label fw-semibold text-light">
-              Email Address
-            </label>
+            <label>Email</label>
             <input
               type="email"
-              placeholder="Enter your email address"
               className="form-control"
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
-          {/* Password */}
           <div className="mb-3">
-            <label className="form-label fw-semibold text-light">
-              Password
-            </label>
+            <label>Password</label>
             <input
               type="password"
-              placeholder="Enter password"
               className="form-control"
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
-          {/* Button */}
           <div className="d-grid">
-            <button
-              type="submit"
-              className="btn btn-primary fw-bold"
-            >
+            <button type="submit" className="btn btn-primary">
               Log In
             </button>
           </div>
         </form>
 
-        {/* Sign Up */}
         <p className="text-center mt-4">
           Don't have an account?{" "}
-          <Link
-            to="/create-account"
-            className="fw-semibold text-decoration-none text-info"
-          >
-            Create Account
-          </Link>
+          <Link to="/create-account">Create Account</Link>
         </p>
+
       </div>
     </div>
   );
