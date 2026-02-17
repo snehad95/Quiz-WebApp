@@ -45,8 +45,9 @@ const overlay = {
 };
 
 const panel = {
+  marginTop:"240px",
   width: "380px",
-  height: "70vh",
+  height: "50vh",
   background: "#081a35",
   padding: "30px 25px",
   color: "#fff",

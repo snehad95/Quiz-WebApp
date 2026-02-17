@@ -22,6 +22,7 @@ import Login from "./components/Login";
 import HomePage from "./HomePage";
 import Dashboard from "./components/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
+import CourseContent from "./components/QuizPage/CourseContent";
 
 
 function App() {
@@ -66,6 +67,7 @@ function App() {
         <Route path="/create-account" element={<CreateAccount />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/FeatureBoxes" element={<FeatureBoxes />} />
+        <Route path="/course-content" element={<CourseContent />} />
       </Routes>
 
       {/* Common Footer */}
