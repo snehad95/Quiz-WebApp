@@ -20,14 +20,13 @@ import Exams from "./components/Exams";
 
 import CreateAccount from "./components/CreateAccount";
 import Login from "./components/Login";
-<<<<<<< HEAD
+
 import HomePage from "./HomePage";
 import Dashboard from "./components/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import CourseContent from "./components/QuizPage/CourseContent";
 
-=======
->>>>>>> 0f4cf6bfd60fdabdd20c370912b393400c02a90a
+
 
 function App() {
   const [popup, setPopup] = useState(null);
@@ -86,13 +85,12 @@ function App() {
         <Route path="/About" element={<About />} />
         <Route path="/Course" element={<Course />} />
         <Route path="/Exams" element={<Exams />} />
-<<<<<<< HEAD
+
         <Route path="/create-account" element={<CreateAccount />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/FeatureBoxes" element={<FeatureBoxes />} />
         <Route path="/course-content" element={<CourseContent />} />
-=======
->>>>>>> 0f4cf6bfd60fdabdd20c370912b393400c02a90a
+
       </Routes>
 
       <Footer />
