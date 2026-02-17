@@ -1,116 +1,106 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 
-function CreateAccount() {
+function CreateAccount({ close }) {
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match ❌");
+      return;
+    }
+
+    setError("");
+    alert("Account Created Successfully ✅");
+    close();
+  };
+
   return (
     <div
-      className="d-flex justify-content-center align-items-center"
       style={{
-        minHeight: "100vh",
-        backgroundColor: "#eaf2ff",
-        padding: "20px",
+        width: "100%",
+        maxWidth: "420px",
+        backgroundColor: "#0b1c3d",
+        color: "white",
+        borderRadius: "15px",
+        padding: "30px",
+        position: "relative",
+        transform: "scale(1)",
+        animation: "scaleIn 0.3s ease-in-out",
       }}
     >
-      <div
-        className="shadow-lg"
+      <button
+        onClick={close}
         style={{
-          width: "100%",
-          maxWidth: "450px",
-          backgroundColor: "#0b1c3d",
+          position: "absolute",
+          top: "10px",
+          right: "15px",
+          background: "none",
+          border: "none",
           color: "white",
-          borderRadius: "12px",
-          padding: "30px",
+          fontSize: "18px",
         }}
       >
-        {/* Heading */}
-        <h2 className="text-center mb-2" style={{ color: "#4da6ff" }}>
+        ✖
+      </button>
+
+      <h3 className="text-center mb-3" style={{ color: "#4da6ff" }}>
+        Create Account
+      </h3>
+
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Full Name"
+          className="form-control mb-2"
+          required
+        />
+
+        <input
+          type="email"
+          placeholder="Email"
+          className="form-control mb-2"
+          required
+        />
+
+        <input
+          type="password"
+          placeholder="Password"
+          className="form-control mb-2"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+
+        <input
+          type="password"
+          placeholder="Confirm Password"
+          className="form-control mb-2"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          required
+        />
+
+        {error && (
+          <p style={{ color: "red", fontSize: "14px" }}>{error}</p>
+        )}
+
+        <button className="btn btn-primary w-100 mt-2">
           Create Account
-        </h2>
-        <p className="text-center mb-4" style={{ color: "#9ecbff" }}>
-          Test your skills. Track your growth. Level up.
-        </p>
+        </button>
+      </form>
 
-        {/* FORM */}
-        <form>
-          {/* Full Name */}
-          <div className="mb-3">
-            <label className="form-label fw-semibold text-light">
-              Full Name
-            </label>
-            <input
-              type="text"
-              placeholder="Enter your full name"
-              className="form-control"
-            />
-          </div>
-
-          {/* Phone */}
-          <div className="mb-3">
-            <label className="form-label fw-semibold text-light">
-              Phone Number
-            </label>
-            <input
-              type="tel"
-              placeholder="Enter your phone number"
-              className="form-control"
-            />
-          </div>
-
-          {/* Username */}
-          <div className="mb-3">
-            <label className="form-label fw-semibold text-light">
-              Username
-            </label>
-            <input
-              type="text"
-              placeholder="Enter your username"
-              className="form-control"
-            />
-          </div>
-
-          {/* Email */}
-          <div className="mb-3">
-            <label className="form-label fw-semibold text-light">
-              Email Address
-            </label>
-            <input
-              type="email"
-              placeholder="Enter your email address"
-              className="form-control"
-            />
-          </div>
-
-          {/* Password */}
-          <div className="mb-3">
-            <label className="form-label fw-semibold text-light">
-              Password
-            </label>
-            <input
-              type="password"
-              placeholder="Create password"
-              className="form-control"
-            />
-          </div>
-
-          {/* Button */}
-          <div className="d-grid mt-3">
-            <button type="submit" className="btn btn-primary fw-bold">
-              Create Account
-            </button>
-          </div>
-        </form>
-
-        {/* Login Link */}
-        <p className="text-center mt-4">
-          Already have an account?{" "}
-          <Link
-            to="/login"
-            className="fw-semibold text-decoration-none text-info"
-          >
-            Log In
-          </Link>
-        </p>
-      </div>
+      <style>
+        {`
+        @keyframes scaleIn {
+          from { transform: scale(0.8); opacity: 0; }
+          to { transform: scale(1); opacity: 1; }
+        }
+        `}
+      </style>
     </div>
   );
 }

@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { isLoggedIn, logout } from "../utils/auth";
 
 
-function Header() {
+
+function Header({ setPopup }) {
   // Google search function
   const googleSearch = () => {
     const query = document.getElementById("googleSearch").value;
@@ -81,7 +81,10 @@ function Header() {
       </div>
 
       {/* ===== Main Navbar ===== */}
-      <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "#0b1c3d" }}>
+      <nav
+        className="navbar navbar-expand-lg"
+        style={{ backgroundColor: "#0b1c3d" }}
+      >
         <div className="container-fluid">
           {/* Logo */}
           <Link
@@ -108,9 +111,15 @@ function Header() {
           </button>
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <div className="ms-auto d-flex align-items-center" style={{ gap: "30px" }}>
+            <div
+              className="ms-auto d-flex align-items-center"
+              style={{ gap: "30px" }}
+            >
               {/* Navbar Menu */}
-              <ul className="navbar-nav mb-0 d-flex flex-row" style={{ gap: "95px" }}>
+              <ul
+                className="navbar-nav mb-0 d-flex flex-row"
+                style={{ gap: "95px" }}
+              >
                 <li className="nav-item">
                   <Link
                     to="/"
@@ -150,24 +159,20 @@ function Header() {
               </ul>
 
               {/* Buttons */}
-              <div className="d-flex" style={{ gap: "15px" }}>
-                <Link to="/Login">
-                  <button className="btn btn-outline-light px-4 rounded-pill">
-                    LogIn
-                  </button>
-                </Link>
+              <div className="ms-auto">
+                <button
+                  className="btn btn-outline-light me-2"
+                  onClick={() => setPopup("login")}
+                >
+                  Login
+                </button>
 
-                <Link to="/create-account">
-                  <button
-                    className="btn px-4 rounded-pill text-white"
-                    style={{
-                      background: "linear-gradient(45deg,#4facfe,#00f2fe)",
-                      border: "none",
-                    }}
-                  >
-                    Create Account
-                  </button>
-                </Link>
+                <button
+                  className="btn btn-warning"
+                  onClick={() => setPopup("create")}
+                >
+                  Create Account
+                </button>
               </div>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
@@ -8,35 +8,61 @@ import Slideshow from "./components/Slideshow";
 import FeatureBoxes from "./components/FeatureBoxes";
 import Info from "./components/Info";
 import ExamCategories from "./components/ExamCategories";
-
 import HowItWorks from "./components/HowItWorks";
 import StatisticsSection from "./components/StatisticsSection";
 import Testimonials from "./components/Testimonials";
 import CallToAction from "./components/CallToAction";
+
 import QuizPage from "./components/QuizPage";
 import About from "./components/About";
 import Course from "./components/Course";
 import Exams from "./components/Exams";
+
 import CreateAccount from "./components/CreateAccount";
 import Login from "./components/Login";
-import HomePage from "./HomePage";
-import Dashboard from "./components/Dashboard";
-import ProtectedRoute from "./components/ProtectedRoute";
-
 
 function App() {
+  const [popup, setPopup] = useState(null);
+
   return (
     <>
-      {/* Common Header */}
-      <Header />
+      <Header setPopup={setPopup} />
 
       <Routes>
-        {/* ===== Home Page ===== */}
         <Route
           path="/"
           element={
             <>
-              <Slideshow />
+              <div style={{ position: "relative" }}>
+                <Slideshow />
+
+                {/* Popup Overlay */}
+                {popup && (
+                  <div
+                    style={{
+                      position: "fixed",
+                      top: 0,
+                      left: 0,
+                      width: "100%",
+                      height: "100vh",
+                      backgroundColor: "rgba(0,0,0,0.6)",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      zIndex: 999,
+                    }}
+                  >
+                    {popup === "login" && (
+                      <Login close={() => setPopup(null)} />
+                    )}
+
+                    {popup === "create" && (
+                      <CreateAccount close={() => setPopup(null)} />
+                    )}
+                  </div>
+                )}
+              </div>
+
               <FeatureBoxes />
               <Info />
               <ExamCategories />
@@ -44,31 +70,16 @@ function App() {
               <StatisticsSection />
               <Testimonials />
               <CallToAction />
-              <HomePage />
             </>
           }
         />
 
-        {/* ===== Other Pages ===== */}
-        <Route path="/dashboard" 
-        element={
-            <ProtectedRoute>
-               <Dashboard />
-            </ProtectedRoute>
-          } 
-          />
-
-        
         <Route path="/QuizPage/*" element={<QuizPage />} />
         <Route path="/About" element={<About />} />
         <Route path="/Course" element={<Course />} />
         <Route path="/Exams" element={<Exams />} />
-        <Route path="/create-account" element={<CreateAccount />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/FeatureBoxes" element={<FeatureBoxes />} />
       </Routes>
 
-      {/* Common Footer */}
       <Footer />
     </>
   );
