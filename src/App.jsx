@@ -20,14 +20,8 @@ import Exams from "./components/Exams";
 
 import CreateAccount from "./components/CreateAccount";
 import Login from "./components/Login";
-<<<<<<< HEAD
-import HomePage from "./HomePage";
-import Dashboard from "./components/Dashboard";
-import ProtectedRoute from "./components/ProtectedRoute";
-import CourseContent from "./components/QuizPage/CourseContent";
 
-=======
->>>>>>> 0f4cf6bfd60fdabdd20c370912b393400c02a90a
+import CourseContent from "./components/QuizPage/CourseContent";
 
 function App() {
   const [popup, setPopup] = useState(null);
@@ -41,36 +35,7 @@ function App() {
           path="/"
           element={
             <>
-              <div style={{ position: "relative" }}>
-                <Slideshow />
-
-                {/* Popup Overlay */}
-                {popup && (
-                  <div
-                    style={{
-                      position: "fixed",
-                      top: 0,
-                      left: 0,
-                      width: "100%",
-                      height: "100vh",
-                      backgroundColor: "rgba(0,0,0,0.6)",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      zIndex: 999,
-                    }}
-                  >
-                    {popup === "login" && (
-                      <Login close={() => setPopup(null)} />
-                    )}
-
-                    {popup === "create" && (
-                      <CreateAccount close={() => setPopup(null)} />
-                    )}
-                  </div>
-                )}
-              </div>
-
+              <Slideshow />
               <FeatureBoxes />
               <Info />
               <ExamCategories />
@@ -86,14 +51,33 @@ function App() {
         <Route path="/About" element={<About />} />
         <Route path="/Course" element={<Course />} />
         <Route path="/Exams" element={<Exams />} />
-<<<<<<< HEAD
-        <Route path="/create-account" element={<CreateAccount />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/FeatureBoxes" element={<FeatureBoxes />} />
         <Route path="/course-content" element={<CourseContent />} />
-=======
->>>>>>> 0f4cf6bfd60fdabdd20c370912b393400c02a90a
       </Routes>
+
+      {/* POPUP OUTSIDE ROUTES */}
+      {popup && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100vh",
+            backgroundColor: "rgba(0,0,0,0.6)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 999,
+          }}
+        >
+          {popup === "login" && (
+            <Login close={() => setPopup(null)} />
+          )}
+          {popup === "create" && (
+            <CreateAccount close={() => setPopup(null)} />
+          )}
+        </div>
+      )}
 
       <Footer />
     </>
