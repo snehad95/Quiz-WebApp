@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
+
 
 function Card({ img, title, desc }) {
   const [hover, setHover] = useState(false);
@@ -51,7 +53,8 @@ function Card({ img, title, desc }) {
         <p className="small mb-2">{desc}</p>
 
         {/* BUTTON */}
-        <button className="btn btn-primary btn-sm w-100">Open</button>
+
+        <Link to ="/course-content" className="btn btn-primary btn-sm w-100">Open</Link>
       </div>
     </div>
   );
@@ -98,9 +101,9 @@ function DashBoard() {
       {/* ===== SECOND HEADING (BLUE) ===== */}
       <div className="mt-5 mb-3">
         <span
-          className="fw-bold px-3 py-2 text-white"
+          className="fw-bold px-3 py-2"
           style={{
-            background: "#0d6efd",
+            background: "#ffd6e7",
             borderRadius: "8px",
             display: "inline-block",
           }}

@@ -136,12 +136,13 @@ function QuizPageHome() {
 
         <hr />
 
-        {/* Security Indicators */}
+        {/* Security Indicators
         <div style={{ fontSize: "14px" }}>
           <p><FaShieldAlt /> Device Bound ✔</p>
           <p><FaShieldAlt /> Secure Session ✔</p>
           <p><FaShieldAlt /> Fullscreen Required ✔</p>
         </div>
+         */}
 
         {/* Bottom Section */}
         <div style={{ position: "absolute", bottom: "20px", left: "20px" }}>
