@@ -73,7 +73,7 @@ New Delhi, Delhi 110025, India
           Website owned & maintained by: Centre for Development of Advanced Computing (C-DAC)
         </p>
 
-<p>Created By CDAC Intern - Purva Athnere, Sneha Dhotre , Pooja Vedwal , Aditi Giri</p>
+<p>Created By CDAC Intern - Purva Athnere, Sneha Dhotre , Aditi Giri , Pooja Vedwal</p>
         <p className="mb-0">© 2026 C-DAC. All rights reserved.</p>
       </div>
 
