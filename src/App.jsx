@@ -90,7 +90,7 @@ function App() {
         <Route path="/Login" element={<Login />} />
 
           {/* User Profile */}
-          <Route path="user-profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
+          <Route path="user-profile" element={<UserProfile />} />
       </Routes>
 
       <Footer />
