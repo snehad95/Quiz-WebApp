@@ -2,18 +2,13 @@ import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
+import Test from "./components/QuizPage/Test";
 import Footer from "./components/Footer";
 
 import Slideshow from "./components/Slideshow";
 import FeatureBoxes from "./components/FeatureBoxes";
 import Info from "./components/Info";
 import ExamCategories from "./components/ExamCategories";
-import HowItWorks from "./components/HowItWorks";
-import StatisticsSection from "./components/StatisticsSection";
-import Testimonials from "./components/Testimonials";
-import CallToAction from "./components/CallToAction";
-
-import QuizPage from "./components/QuizPage";
 import About from "./components/About";
 import Course from "./components/Course";
 import Exams from "./components/Exams";
@@ -21,6 +16,8 @@ import Exams from "./components/Exams";
 import CreateAccount from "./components/CreateAccount";
 import Login from "./components/Login";
 
+import QuizPageHome from "./components/QuizPage/QuizPageHome";
+import Dashboard from "./components/QuizPage/DashBoard";
 import CourseContent from "./components/QuizPage/CourseContent";
 
 function App() {
@@ -39,22 +36,27 @@ function App() {
               <FeatureBoxes />
               <Info />
               <ExamCategories />
-              <HowItWorks />
-              <StatisticsSection />
-              <Testimonials />
-              <CallToAction />
             </>
           }
         />
 
-        <Route path="/QuizPage/*" element={<QuizPage />} />
+        {/* Quiz Section */}
+        <Route path="/QuizPage/*" element={<QuizPageHome />} />
+        <Route path="/course-content" element={<CourseContent />} />
+
+        {/* Dashboard */}
+        <Route path="/dashboard/*" element={<Dashboard />} />
+         <Route path="/Test" element={<Test />} />
+        {/* Other Pages */}
         <Route path="/About" element={<About />} />
         <Route path="/Course" element={<Course />} />
         <Route path="/Exams" element={<Exams />} />
-        <Route path="/course-content" element={<CourseContent />} />
+
+        {/* Auth */}
+        <Route path="/create-account" element={<CreateAccount />} />
+        <Route path="/Login" element={<Login />} />
       </Routes>
 
-      {/* POPUP OUTSIDE ROUTES */}
       {popup && (
         <div
           style={{
