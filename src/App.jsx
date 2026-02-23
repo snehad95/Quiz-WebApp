@@ -10,7 +10,7 @@ import Info from "./components/Info";
 import ExamCategories from "./components/ExamCategories";
 import About from "./components/About";
 import Course from "./components/Course";
-import Exams from "./components/Exams";
+import Exams from "../Exams";
 
 import CreateAccount from "./components/CreateAccount";
 import Login from "./components/Login";
