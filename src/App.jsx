@@ -19,6 +19,7 @@ import Login from "./components/Login";
 import QuizPageHome from "./components/QuizPage/QuizPageHome";
 import Dashboard from "./components/QuizPage/DashBoard";
 import CourseContent from "./components/QuizPage/CourseContent";
+import UserProfile from "./components/QuizPage/UserProfile";
 
 function App() {
   const [popup, setPopup] = useState(null);
@@ -55,6 +56,9 @@ function App() {
         {/* Auth */}
         <Route path="/create-account" element={<CreateAccount />} />
         <Route path="/Login" element={<Login />} />
+
+          {/* User Profile */}
+          <Route path="user-profile" element={<UserProfile />} />
       </Routes>
 
       {popup && (

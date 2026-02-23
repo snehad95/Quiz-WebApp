@@ -109,19 +109,19 @@ function QuizPageHome() {
         <ul style={{ listStyle: "none", padding: 0 }}>
 
           <li className="mb-3">
-            <Link to="/QuizPage" className="text-white text-decoration-none">
+            <Link to="\QuizPage\Exams.jsx" className="text-white text-decoration-none">
               <FaTachometerAlt className="me-2" /> Dashboard
             </Link>
           </li>
 
           <li className="mb-3">
-            <Link to="/QuizPage/exams" className="text-white text-decoration-none">
+            <Link to="\QuizPage\Exams.jsx" className="text-white text-decoration-none">
               <FaBook className="me-2" /> Exams
             </Link>
           </li>
 
           <li className="mb-3">
-            <Link to="/QuizPage/profile" className="text-white text-decoration-none">
+            <Link to="/QuizPage/UserProfile" className="text-white text-decoration-none">
               <FaIdCard className="me-2" /> Profile
             </Link>
           </li>

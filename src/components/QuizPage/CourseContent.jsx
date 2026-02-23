@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useNavigate } from "react-router-dom";
 
 function CourseContent() {
+  const navigate = useNavigate();
   const sections = [
     {
       title: "Section 1: Programming Basics",
@@ -128,7 +130,10 @@ function CourseContent() {
                   {!isCompleted && (
                     <button
                       className="btn btn-success"
-                      onClick={() => completeSection(index)}
+                      onClick={() => {
+                        completeSection(index); // existing function
+                        navigate("/test"); // redirect to Test page
+                      }}
                     >
                       Start Test
                     </button>
