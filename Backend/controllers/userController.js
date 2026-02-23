@@ -1,12 +1,19 @@
-const User  = require("../models/User");
+const User = require("../models/User");
 
+exports.updateProfile = async (req, res) => {
+  try {
+    const user = await User.findByIdAndUpdate(
+      req.user.id,
+      {
+        name: req.body.name,
+        phone: req.body.phone,
+        bio: req.body.bio,
+      },
+      { new: true }
+    );
 
-exports.getProfile= async (req, res) => {
-    try {
-        const user = await User.findById(req.user.id).select("-password");
-
-        res.json(user);
-    }  catch (err) {
-        res.status(500).json({ message: "Server error" });
-    }
+    res.json(user);
+  } catch {
+    res.status(500).json({ msg: "Profile update failed" });
+  }
 };
