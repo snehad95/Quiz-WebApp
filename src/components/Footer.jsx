@@ -3,15 +3,21 @@ import React from "react";
 function Footer() {
   return (
     <footer style={{ background: "#0b1c3d", color: "white" }}>
-
       <div className="container py-5">
         <div className="row">
-
           {/* Centers */}
           <div className="col-md-4 mb-4">
             <h5 className="footer-title">CENTERS</h5>
+            
             <ul className="footer-list">
-              <li>Bengaluru</li>
+                <li
+                onClick={() =>
+                  window.open("https://cdac.in/index.aspx?id=BL", "_blank")
+                }
+                style={{ cursor: "pointer" }}
+              >
+                Begaluru
+              </li>
               <li>Chennai</li>
               <li>Delhi</li>
               <li>Hyderabad</li>
@@ -30,7 +36,14 @@ function Footer() {
           <div className="col-md-4 mb-4">
             <h5 className="footer-title">LINKS</h5>
             <ul className="footer-list">
-              <li>About Us</li>
+              <li
+                onClick={() =>
+                  window.open("https://cdac.in/index.aspx?id=about", "_blank")
+                }
+                style={{ cursor: "pointer" }}
+              >
+                About Us
+              </li>
               <li>Products & Services</li>
               <li>R&D</li>
               <li>Careers</li>
@@ -51,32 +64,34 @@ function Footer() {
 
             <p>
               Centre for Development of Advanced Computing <br />
-             Plot No. 20, FC-33, Institutional Area, Jasola, <br />
-New Delhi, Delhi 110025, India
-             
-        </p>
+              Plot No. 20, FC-33, Institutional Area, Jasola, <br />
+              New Delhi, Delhi 110025, India
+            </p>
 
             <p>📞 Phone: (011) 26940239</p>
             <p>📠 Fax: +91-20-25503131</p>
           </div>
-
         </div>
       </div>
 
       {/* Bottom Footer */}
       <div className="footer-bottom text-center py-3">
         <p className="mb-1">
-          Help | Website Policies | Copyright Policy | Terms & Conditions | Reach Us | Sitemap
+          Help | Website Policies | Copyright Policy | Terms & Conditions |
+          Reach Us | Sitemap
         </p>
 
         <p className="mb-0">
-          Website owned & maintained by: Centre for Development of Advanced Computing (C-DAC)
+          Website owned & maintained by: Centre for Development of Advanced
+          Computing (C-DAC)
         </p>
 
-<p>Created By CDAC Intern - Purva Athnere, Sneha Dhotre , Aditi Giri , Pooja Vedwal</p>
+        <p>
+          Created By CDAC Intern - Purva Athnere, Sneha Dhotre , Aditi Giri ,
+          Pooja Vedwal
+        </p>
         <p className="mb-0">© 2026 C-DAC. All rights reserved.</p>
       </div>
-
 
       {/* CSS */}
       <style>
@@ -115,10 +130,8 @@ New Delhi, Delhi 110025, India
 
         `}
       </style>
-
     </footer>
   );
 }
 
 export default Footer;
-

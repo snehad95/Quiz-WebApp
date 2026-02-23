@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function Header({ setPopup, user, setUser }) {
+  const { t, i18n } = useTranslation();
 
   const googleSearch = () => {
     const query = document.getElementById("googleSearch").value;
@@ -22,18 +24,30 @@ function Header({ setPopup, user, setUser }) {
           padding: "6px 0",
         }}
       >
-        <span className="text-white fw-bold">
-          Welcome to ExamSphere
-        </span>
+        <span className="text-white fw-bold">{t("welcome")}</span>
 
         <div className="d-flex align-items-center gap-3 fw-bold">
-          <Link to="/" className="text-white text-decoration-none">
+          <button
+            onClick={() => {
+              i18n.changeLanguage("en");
+              localStorage.setItem("lang", "en");
+            }}
+            className="text-white border-0 bg-transparent"
+          >
             🌐 English
-          </Link>
-          <span>|</span>
-          <Link to="/" className="text-white text-decoration-none">
+          </button>
+
+          <span className="text-white mx-2">|</span>
+
+          <button
+            onClick={() => {
+              i18n.changeLanguage("hi");
+              localStorage.setItem("lang", "hi");
+            }}
+            className="text-white border-0 bg-transparent"
+          >
             हिंदी
-          </Link>
+          </button>
 
           <form
             className="d-flex ms-3"
@@ -47,10 +61,10 @@ function Header({ setPopup, user, setUser }) {
               autoComplete="off"
               className="form-control form-control-sm me-2"
               type="search"
-              placeholder="Search"
+              placeholder={t("search")}
             />
             <button type="submit" className="btn btn-outline-success btn-sm">
-              Search
+              {t("search")}
             </button>
           </form>
         </div>
@@ -62,8 +76,6 @@ function Header({ setPopup, user, setUser }) {
         style={{ backgroundColor: "#0b1c3d" }}
       >
         <div className="container-fluid">
-
-          {/* Logo */}
           <Link
             to="/"
             className="navbar-brand d-flex align-items-center text-decoration-none"
@@ -74,9 +86,7 @@ function Header({ setPopup, user, setUser }) {
               width="110"
               className="me-3"
             />
-            <span className="fw-bold fs-3 text-white">
-              ExamSphere
-            </span>
+            <span className="fw-bold fs-3 text-white">ExamSphere</span>
           </Link>
 
           <div className="collapse navbar-collapse">
@@ -84,37 +94,41 @@ function Header({ setPopup, user, setUser }) {
               className="ms-auto d-flex align-items-center"
               style={{ gap: "30px" }}
             >
-              {/* Menu */}
               <ul
                 className="navbar-nav mb-0 d-flex flex-row"
                 style={{ gap: "40px" }}
               >
                 <li className="nav-item">
                   <Link to="/" className="nav-link text-white fw-semibold">
-                    Home
+                    {t("home")}
                   </Link>
                 </li>
 
                 <li className="nav-item">
                   <Link to="/About" className="nav-link text-white fw-semibold">
-                    About
+                    {t("about")}
                   </Link>
                 </li>
 
                 <li className="nav-item">
-                  <Link to="/QuizPage" className="nav-link text-white fw-semibold">
-                    Exams
+                  <Link
+                    to="/QuizPage"
+                    className="nav-link text-white fw-semibold"
+                  >
+                    {t("exams")}
                   </Link>
                 </li>
 
                 <li className="nav-item">
-                  <Link to="/Course" className="nav-link text-white fw-semibold">
-                    Course
+                  <Link
+                    to="/Course"
+                    className="nav-link text-white fw-semibold"
+                  >
+                    {t("course")}
                   </Link>
                 </li>
               </ul>
 
-              {/* Auth Buttons */}
               <div className="ms-3">
                 {!user ? (
                   <>
@@ -122,48 +136,33 @@ function Header({ setPopup, user, setUser }) {
                       className="btn btn-outline-light me-2"
                       onClick={() => setPopup("login")}
                     >
-                      Login
+                      {t("login")}
                     </button>
 
                     <button
                       className="btn btn-warning"
                       onClick={() => setPopup("create")}
                     >
-                      Create Account
+                      {t("createAccount")}
                     </button>
                   </>
                 ) : (
                   <div className="d-flex align-items-center gap-3 text-white">
-                    <span style={{ fontWeight: "600" }}>
-                      👤 {user.name}
-                    </span>
+                    <span style={{ fontWeight: "600" }}>👤 {user.name}</span>
 
                     <button
                       className="btn btn-sm btn-danger"
                       onClick={() => setUser(null)}
                     >
-                      Logout
+                      {t("logout")}
                     </button>
                   </div>
                 )}
               </div>
-
             </div>
           </div>
         </div>
       </nav>
-
-      <style>
-        {`
-          .nav-link:hover {
-            color: #4facfe !important;
-          }
-
-          .btn:hover {
-            opacity: 0.85;
-          }
-        `}
-      </style>
     </>
   );
 }

@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 
 import App from "./App.jsx";
+import "./i18n";
 
 // CSS imports
 import "bootstrap/dist/css/bootstrap.min.css";
