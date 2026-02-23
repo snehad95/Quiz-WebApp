@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
-function CreateAccount({ close }) {
+function CreateAccount({ close, setUser }) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
@@ -14,8 +16,15 @@ function CreateAccount({ close }) {
     }
 
     setError("");
-    alert("Account Created Successfully ✅");
-    close();
+
+    // Fake account creation (later connect backend)
+    const newUser = {
+      name: name,
+      email: email,
+    };
+
+    setUser(newUser); // ✅ set user in App.jsx
+    close(); // ✅ close popup
   };
 
   return (
@@ -28,10 +37,10 @@ function CreateAccount({ close }) {
         borderRadius: "15px",
         padding: "30px",
         position: "relative",
-        transform: "scale(1)",
         animation: "scaleIn 0.3s ease-in-out",
       }}
     >
+      {/* Close Button */}
       <button
         onClick={close}
         style={{
@@ -42,6 +51,7 @@ function CreateAccount({ close }) {
           border: "none",
           color: "white",
           fontSize: "18px",
+          cursor: "pointer",
         }}
       >
         ✖
@@ -56,6 +66,8 @@ function CreateAccount({ close }) {
           type="text"
           placeholder="Full Name"
           className="form-control mb-2"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
           required
         />
 
@@ -63,6 +75,8 @@ function CreateAccount({ close }) {
           type="email"
           placeholder="Email"
           className="form-control mb-2"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
 
@@ -85,7 +99,9 @@ function CreateAccount({ close }) {
         />
 
         {error && (
-          <p style={{ color: "red", fontSize: "14px" }}>{error}</p>
+          <p style={{ color: "red", fontSize: "14px" }}>
+            {error}
+          </p>
         )}
 
         <button className="btn btn-primary w-100 mt-2">

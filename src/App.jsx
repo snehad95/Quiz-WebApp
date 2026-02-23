@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
-import Test from "./components/QuizPage/Test";
 import Footer from "./components/Footer";
 
 import Slideshow from "./components/Slideshow";
@@ -20,15 +19,24 @@ import QuizPageHome from "./components/QuizPage/QuizPageHome";
 import Dashboard from "./components/QuizPage/DashBoard";
 import CourseContent from "./components/QuizPage/CourseContent";
 import UserProfile from "./components/QuizPage/UserProfile";
+import Test from "./components/QuizPage/Test";
 
 function App() {
   const [popup, setPopup] = useState(null);
+  const [user, setUser] = useState(null); // ✅ login state
 
   return (
     <>
-      <Header setPopup={setPopup} />
+      {/* Header */}
+      <Header 
+        setPopup={setPopup} 
+        user={user} 
+        setUser={setUser} 
+      />
 
+      {/* Routes */}
       <Routes>
+        {/* Home */}
         <Route
           path="/"
           element={
@@ -43,32 +51,25 @@ function App() {
 
         {/* Quiz Section */}
         <Route path="/QuizPage/*" element={<QuizPageHome />} />
-        <Route path="/course-content" element={<CourseContent />} />
+        <Route path="/Test" element={<Test />} />
 
         {/* Dashboard */}
         <Route path="/dashboard/*" element={<Dashboard />} />
-         <Route path="/Test" element={<Test />} />
+        <Route path="/course-content" element={<CourseContent />} />
+        <Route path="/user-profile" element={<UserProfile />} />
+
         {/* Other Pages */}
         <Route path="/About" element={<About />} />
         <Route path="/Course" element={<Course />} />
         <Route path="/Exams" element={<Exams />} />
-
-        {/* Auth */}
-        <Route path="/create-account" element={<CreateAccount />} />
-        <Route path="/Login" element={<Login />} />
-
-          {/* User Profile */}
-          <Route path="user-profile" element={<UserProfile />} />
       </Routes>
 
+      {/* Popup Modal */}
       {popup && (
         <div
           style={{
             position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100vh",
+            inset: 0,
             backgroundColor: "rgba(0,0,0,0.6)",
             display: "flex",
             justifyContent: "center",
@@ -77,14 +78,22 @@ function App() {
           }}
         >
           {popup === "login" && (
-            <Login close={() => setPopup(null)} />
+            <Login
+              close={() => setPopup(null)}
+              setUser={setUser}
+            />
           )}
+
           {popup === "create" && (
-            <CreateAccount close={() => setPopup(null)} />
+            <CreateAccount
+              close={() => setPopup(null)}
+              setUser={setUser}
+            />
           )}
         </div>
       )}
 
+      {/* Footer */}
       <Footer />
     </>
   );
