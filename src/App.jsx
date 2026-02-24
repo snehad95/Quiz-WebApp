@@ -10,16 +10,17 @@ import Info from "./components/Info";
 import ExamCategories from "./components/ExamCategories";
 import About from "./components/About";
 import Course from "./components/Course";
-import Exams from "./components/Exams";
+import Exams from "./components/QuizPage/Exams.jsx";
 
 import CreateAccount from "./components/CreateAccount";
 import Login from "./components/Login";
 
-import QuizPageHome from "./components/QuizPage/QuizPageHome";
-import Dashboard from "./components/QuizPage/DashBoard";
+
+
 import CourseContent from "./components/QuizPage/CourseContent";
 import UserProfile from "./components/QuizPage/UserProfile";
 import Test from "./components/QuizPage/Test";
+
 
 function App() {
   const [popup, setPopup] = useState(null);
@@ -50,11 +51,11 @@ function App() {
         />
 
         {/* Quiz Section */}
-        <Route path="/QuizPage/*" element={<QuizPageHome />} />
+  
         <Route path="/Test" element={<Test />} />
 
         {/* Dashboard */}
-        <Route path="/dashboard/*" element={<Dashboard />} />
+        
         <Route path="/course-content" element={<CourseContent />} />
         <Route path="/user-profile" element={<UserProfile />} />
 

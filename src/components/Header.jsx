@@ -112,7 +112,7 @@ function Header({ setPopup, user, setUser }) {
 
                 <li className="nav-item">
                   <Link
-                    to="/QuizPage"
+                    to="/Exams"
                     className="nav-link text-white fw-semibold"
                   >
                     {t("exams")}

@@ -75,7 +75,7 @@ const App = () => {
           </div>
           <h1>Exam Submitted</h1>
           <p>Your responses for {EXAM_DATA.subject} have been recorded successfully.</p>
-          <button className="btn-primary" onClick={() =>routerNavigate("/QuizPage")}>
+          <button className="btn-primary" onClick={() =>routerNavigate("/Exams")}>
             Go to Exams
           </button>
         </div>
