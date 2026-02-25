@@ -132,7 +132,7 @@ function CourseContent() {
                       className="btn btn-success"
                       onClick={() => {
                         completeSection(index); // existing function
-                        navigate("/test"); // redirect to Test page
+                        navigate("/Test"); // redirect to  ExamPage
                       }}
                     >
                       Start Test

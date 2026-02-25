@@ -19,7 +19,7 @@ import Login from "./components/Login";
 
 import CourseContent from "./components/QuizPage/CourseContent";
 import UserProfile from "./components/QuizPage/UserProfile";
-import Test from "./components/QuizPage/Test";
+import Test from "./components/QuizPage/Test.jsx";
 
 
 function App() {
@@ -52,7 +52,7 @@ function App() {
 
         {/* Quiz Section */}
   
-        <Route path="/Test" element={<Test />} />
+        <Route path="/Test" element={<Test/>} />
 
         {/* Dashboard */}
         
