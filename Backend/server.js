@@ -3,40 +3,30 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 
-const authRoutes = require("./routes/authRoutes");
-const quizRoutes = require("./routes/quizRoutes");
-const { verifyToken } = require("./middleware/authMiddleware");
+const questionRoutes = require("./routes/questionRoutes");
 
 const app = express();
 
-
-// Middleware First
+// Middleware
 app.use(cors());
 app.use(express.json());
 
+// Routes
+app.use("/api/questions", questionRoutes);
 
-// Routes After 
-app.use("/api/auth", authRoutes);
-app.use("/api/quiz", quizRoutes);
+app.get("/", (req, res) => {
+  res.send("Quiz Backend Running");
+});
 
+// ✅ Connect DB FIRST then start server
 mongoose.connect(process.env.MONGO_URI)
-.then(()=> console.log("MongoDB Connected"))
-.catch(err => console.log(err));
+.then(() => {
+  console.log("MongoDB Connected");
 
-app.get("/", (req,res)=>{
-    res.send("Quiz Backend Running");
-});
-
-// Test Protected Route
-app.get("/api/protected", verifyToken, (req, res) => {
-    res.json({
-        msg: "Protected route accessed",
-        user: req.user
-    });
-});
-
-
-// Server start
-app.listen(5000, ()=>{
+  app.listen(5000, () => {
     console.log("Server started on port 5000");
+  });
+})
+.catch((err) => {
+  console.log("MongoDB Connection Error:", err);
 });
