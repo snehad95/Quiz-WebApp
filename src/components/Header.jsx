@@ -147,7 +147,7 @@ function Header({ setPopup, user, setUser }) {
                     </button>
                   </>
                 ) : (
-                  <div className="d-flex align-items-center gap-3 text-white">
+                  <div className="d-flex align-items-center gap-3 text-black">
                     <span style={{ fontWeight: "600" }}>👤 {user.name}</span>
 
                     <button
