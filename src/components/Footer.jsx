@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer style={{ background: "#0b1c3d", color: "white" }}>
+    <footer id="mainFooter" style={{ background: "#0b1c3d", color: "white" }}>
       <div className="container py-5">
         <div className="row">
           {/* Centers */}

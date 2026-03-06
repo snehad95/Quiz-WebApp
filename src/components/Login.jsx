@@ -10,14 +10,13 @@ function Login({ close, setUser }) {
       return;
     }
 
-    // Fake login (later replace with backend)
     const loggedInUser = {
-      name: email.split("@")[0], // simple name from email
+      name: email.split("@")[0], 
       email: email,
     };
 
-    setUser(loggedInUser); // ✅ set user in App.jsx
-    close(); // ✅ close popup
+    setUser(loggedInUser); 
+    close(); 
   };
 
   return (

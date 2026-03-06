@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -12,157 +12,234 @@ function Header({ setPopup, user, setUser }) {
     }
   };
 
+  // ⭐ Hide FULL header when footer appears
+  useEffect(() => {
+    const header = document.getElementById("mainHeader");
+    const footer = document.getElementById("mainFooter");
+
+    if (!footer || !header) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          header.style.transform = "translateY(-100%)";
+        } else {
+          header.style.transform = "translateY(0)";
+        }
+      });
+    });
+
+    observer.observe(footer);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
-      {/* ===== Top Black Bar ===== */}
+      {/* ⭐ FULL HEADER WRAPPER */}
       <div
-        className="d-flex justify-content-between align-items-center px-4"
+        id="mainHeader"
         style={{
-          backgroundColor: "#000",
-          color: "white",
-          fontSize: "14px",
-          padding: "6px 0",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 1000,
+          transition: "transform 0.3s ease",
         }}
       >
-        <span className="text-white fw-bold">{t("welcome")}</span>
+        {/* ===== Top Black Bar ===== */}
+        <div
+          className="d-flex justify-content-between align-items-center px-4"
+          style={{
+            backgroundColor: "#000",
+            color: "white",
+            fontSize: "14px",
+            padding: "6px 0",
+          }}
+        >
+          <span className="text-white fw-bold">{t("welcome")}</span>
 
-        <div className="d-flex align-items-center gap-3 fw-bold">
-          <button
-            onClick={() => {
-              i18n.changeLanguage("en");
-              localStorage.setItem("lang", "en");
-            }}
-            className="text-white border-0 bg-transparent"
-          >
-            🌐 English
-          </button>
-
-          <span className="text-white mx-2">|</span>
-
-          <button
-            onClick={() => {
-              i18n.changeLanguage("hi");
-              localStorage.setItem("lang", "hi");
-            }}
-            className="text-white border-0 bg-transparent"
-          >
-            हिंदी
-          </button>
-
-          <form
-            className="d-flex ms-3"
-            onSubmit={(e) => {
-              e.preventDefault();
-              googleSearch();
-            }}
-          >
-            <input
-              id="googleSearch"
-              autoComplete="off"
-              className="form-control form-control-sm me-2"
-              type="search"
-              placeholder={t("search")}
-            />
-            <button type="submit" className="btn btn-outline-success btn-sm">
-              {t("search")}
-            </button>
-          </form>
-        </div>
-      </div>
-
-      {/* ===== Navbar ===== */}
-      <nav
-        className="navbar navbar-expand-lg"
-        style={{ backgroundColor: "#0b1c3d" }}
-      >
-        <div className="container-fluid">
-          <Link
-            to="/"
-            className="navbar-brand d-flex align-items-center text-decoration-none"
-          >
-            <img
-              src="assets/images/logo.png"
-              alt="logo"
-              width="110"
-              className="me-3"
-            />
-            <span className="fw-bold fs-3 text-white">ExamSphere</span>
-          </Link>
-
-          <div className="collapse navbar-collapse">
-            <div
-              className="ms-auto d-flex align-items-center"
-              style={{ gap: "30px" }}
+          <div className="d-flex align-items-center gap-3 fw-bold">
+            <button
+              onClick={() => {
+                i18n.changeLanguage("en");
+                localStorage.setItem("lang", "en");
+              }}
+              className="text-white border-0 bg-transparent"
             >
-              <ul
-                className="navbar-nav mb-0 d-flex flex-row"
-                style={{ gap: "40px" }}
+              🌐 English
+            </button>
+
+            <span className="text-white mx-2">|</span>
+
+            <button
+              onClick={() => {
+                i18n.changeLanguage("hi");
+                localStorage.setItem("lang", "hi");
+              }}
+              className="text-white border-0 bg-transparent"
+            >
+              हिंदी
+            </button>
+
+            <form
+              className="d-flex ms-3"
+              onSubmit={(e) => {
+                e.preventDefault();
+                googleSearch();
+              }}
+            >
+              <input
+                id="googleSearch"
+                autoComplete="off"
+                className="form-control form-control-sm me-2"
+                type="search"
+                placeholder={t("search")}
+              />
+              <button type="submit" className="btn btn-outline-success btn-sm">
+                {t("search")}
+              </button>
+            </form>
+          </div>
+        </div>
+
+        {/* ===== Navbar ===== */}
+        <nav
+          className="navbar navbar-expand-lg"
+          style={{ backgroundColor: "#0b1c3d" }}
+        >
+          <div className="container-fluid">
+            <Link
+              to="/"
+              className="navbar-brand d-flex align-items-center text-decoration-none"
+            >
+              <img
+                src="/assets/images/logo.png"
+                alt="logo"
+                width="110"
+                className="me-3"
+              />
+              <span className="fw-bold fs-3 text-white">ExamSphere</span>
+            </Link>
+
+            <div className="collapse navbar-collapse">
+              <div
+                className="ms-auto d-flex align-items-center"
+                style={{ gap: "30px" }}
               >
-                <li className="nav-item">
-                  <Link to="/" className="nav-link text-white fw-semibold">
-                    {t("home")}
-                  </Link>
-                </li>
+                <ul
+                  className="navbar-nav mb-0 d-flex flex-row"
+                  style={{ gap: "40px" }}
+                >
+                  <li className="nav-item">
+                    <Link to="/" className="nav-link text-white fw-semibold">
+                      {t("home")}
+                    </Link>
+                  </li>
 
-                <li className="nav-item">
-                  <Link to="/About" className="nav-link text-white fw-semibold">
-                    {t("about")}
-                  </Link>
-                </li>
-
-                <li className="nav-item">
-                  <Link
-                    to="/Exams"
-                    className="nav-link text-white fw-semibold"
-                  >
-                    {t("exams")}
-                  </Link>
-                </li>
-
-                <li className="nav-item">
-                  <Link
-                    to="/Course"
-                    className="nav-link text-white fw-semibold"
-                  >
-                    {t("course")}
-                  </Link>
-                </li>
-              </ul>
-
-              <div className="ms-3">
-                {!user ? (
-                  <>
-                    <button
-                      className="btn btn-outline-light me-2"
-                      onClick={() => setPopup("login")}
+                  <li className="nav-item">
+                    <Link
+                      to="/About"
+                      className="nav-link text-white fw-semibold"
                     >
-                      {t("login")}
-                    </button>
+                      {t("about")}
+                    </Link>
+                  </li>
 
-                    <button
-                      className="btn btn-warning"
-                      onClick={() => setPopup("create")}
+                  <li className="nav-item">
+                    <Link
+                      to="/Exams"
+                      className="nav-link text-white fw-semibold"
                     >
-                      {t("createAccount")}
-                    </button>
-                  </>
-                ) : (
-                  <div className="d-flex align-items-center gap-3 text-black">
-                    <span style={{ fontWeight: "600" }}>👤 {user.name}</span>
+                      {t("exams")}
+                    </Link>
+                  </li>
 
-                    <button
-                      className="btn btn-sm btn-danger"
-                      onClick={() => setUser(null)}
+                  <li className="nav-item">
+                    <Link
+                      to="/Course"
+                      className="nav-link text-white fw-semibold"
                     >
-                      {t("logout")}
-                    </button>
-                  </div>
-                )}
+                      {t("course")}
+                    </Link>
+                  </li>
+                </ul>
+
+                {/* <div className="ms-3">
+                  {!user ? (
+                    <>
+                      <button
+                        className="btn btn-outline-light me-2"
+                        onClick={() => setPopup("login")}
+                      >
+                        {t("login")}
+                      </button>
+
+                      <button
+                        className="btn btn-warning"
+                        onClick={() => setPopup("create")}
+                      >
+                        {t("createAccount")}
+                      </button>
+                    </>
+                  ) : (
+                    <div className="d-flex align-items-center gap-3 text-white">
+                      <span style={{ fontWeight: "600" }}>👤 {user.name}</span>
+
+                      <button
+                        className="btn btn-sm btn-danger"
+                        onClick={() => setUser(null)}
+                      >
+                        {t("logout")}
+                      </button>
+                    </div>
+                  )}
+                </div> */}
+                <div className="ms-3">
+                  {!user ? (
+                    <>
+                      <button
+                        className="btn btn-outline-light me-2"
+                        onClick={() => setPopup("login")}
+                      >
+                        {t("login")}
+                      </button>
+
+                      <button
+                        className="btn btn-warning"
+                        onClick={() => setPopup("create")}
+                      >
+                        {t("createAccount")}
+                      </button>
+                    </>
+                  ) : (
+                    <div className="d-flex align-items-center gap-3 text-white">
+                      <Link
+                        to="/user-profile"
+                        className="text-white text-decoration-none"
+                        style={{ fontWeight: "600" }}
+                      >
+                        👤 {user.name}
+                      </Link>
+
+                      <button
+                        className="btn btn-sm btn-danger"
+                        onClick={() => setUser(null)}
+                      >
+                        {t("logout")}
+                      </button>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
+
+      {/* spacing because header is fixed */}
+      <div style={{ height: "128px" }}></div>
     </>
   );
 }

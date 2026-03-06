@@ -15,7 +15,7 @@ import {
 
 // Mock Data
 const EXAM_DATA = {
-  subject: "Advanced Web Technologies",
+  subject: "Total Questions Attempted",
   durationMinutes: 50,
   questions: [
     { id: 1, text: "What is the primary benefit of using Tailwind CSS?", options: ["It provides pre-built UI components like Bootstrap", "It uses a utility-first approach for rapid custom styling", "It is a backend framework for Node.js", "It replaces the need for JavaScript in modern web apps"], correctAnswer: 1 },

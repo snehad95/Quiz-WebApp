@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -15,29 +15,30 @@ import Exams from "./components/QuizPage/Exams.jsx";
 import CreateAccount from "./components/CreateAccount";
 import Login from "./components/Login";
 
-
-
 import CourseContent from "./components/QuizPage/CourseContent";
 import UserProfile from "./components/QuizPage/UserProfile";
 import Test from "./components/QuizPage/Test.jsx";
+import CourseDetailedPage from "./SubCourses/CourseDetailedPage.jsx";
 
+import ScrollToTop from "./components/ScrollToTop"; // New Component
 
 function App() {
+  const location = useLocation();
+  const hideLayout = location.pathname === "/Test";
+
   const [popup, setPopup] = useState(null);
-  const [user, setUser] = useState(null); // ✅ login state
+  const [user, setUser] = useState(null);
 
   return (
     <>
+      {/* Scroll to top on route change */}
+      <ScrollToTop />
+
       {/* Header */}
-      <Header 
-        setPopup={setPopup} 
-        user={user} 
-        setUser={setUser} 
-      />
+      {!hideLayout && <Header setPopup={setPopup} user={user} setUser={setUser} />}
 
       {/* Routes */}
       <Routes>
-        {/* Home */}
         <Route
           path="/"
           element={
@@ -49,19 +50,12 @@ function App() {
             </>
           }
         />
-
-        {/* Quiz Section */}
-  
-        <Route path="/Test" element={<Test/>} />
-
-        {/* Dashboard */}
-        
+        <Route path="/Test" element={<Test />} />
         <Route path="/course-content" element={<CourseContent />} />
         <Route path="/user-profile" element={<UserProfile />} />
-
-        {/* Other Pages */}
         <Route path="/About" element={<About />} />
         <Route path="/Course" element={<Course />} />
+        <Route path="/courses/:id" element={<CourseDetailedPage />} />
         <Route path="/Exams" element={<Exams />} />
       </Routes>
 
@@ -78,24 +72,13 @@ function App() {
             zIndex: 999,
           }}
         >
-          {popup === "login" && (
-            <Login
-              close={() => setPopup(null)}
-              setUser={setUser}
-            />
-          )}
-
-          {popup === "create" && (
-            <CreateAccount
-              close={() => setPopup(null)}
-              setUser={setUser}
-            />
-          )}
+          {popup === "login" && <Login close={() => setPopup(null)} setUser={setUser} />}
+          {popup === "create" && <CreateAccount close={() => setPopup(null)} setUser={setUser} />}
         </div>
       )}
 
       {/* Footer */}
-      <Footer />
+      {!hideLayout && <Footer />}
     </>
   );
 }

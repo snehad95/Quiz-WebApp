@@ -5,8 +5,9 @@ function Slideshow() {
     <div
       id="carouselExample"
       className="carousel slide"
-      data-bs-ride="carousel"
-      style={{ margin: 0, padding: 0 }}
+      style={{ margin: 0, padding: 0
+        //  ,marginTop:"128px"
+        }}
     >
       <div className="carousel-inner m-0 p-0">
 
@@ -28,14 +29,14 @@ function Slideshow() {
           />
         </div>
 
-        <div className="carousel-item">
+        {/* <div className="carousel-item">
           <img
             src="assets/images/slideshow_bg7.jpg"
             className="d-block w-100"
             alt="slide3"
             style={{ height: "450px", objectFit: "cover" }}
           />
-        </div>
+        </div> */}
 
         <div className="carousel-item">
           <img

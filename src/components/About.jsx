@@ -2,7 +2,7 @@ import React from "react";
 
 function About() {
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4 py-8">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4 py-8" style={{paddingBottom:"150px", paddingTop:"70px"}}>
       <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-5xl">
         {/* Title */}
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-blue-900 mb-8" style={{color:"#324a8e" , marginTop:"20px" ,marginBottom:"20px"}}>
